@@ -40,4 +40,9 @@ RUN mkdir -p /usr/local/var/singularity/mnt && \
 
 RUN apk del automake libtool m4 autoconf alpine-sdk linux-headers
 
+# IFB
+RUN apk add --no-cache sshfs python3
+RUN pip3 install shyaml j2cli[yaml] argparse
+# END IFB
+
 ENTRYPOINT ["/usr/local/bin/singularity"]
