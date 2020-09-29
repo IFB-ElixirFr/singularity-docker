@@ -44,5 +44,9 @@ FROM alpine:3.10
 LABEL Maintainer vsochat@stanford.edu
 COPY --from=builder /usr/local/singularity /usr/local/singularity
 RUN apk add --no-cache ca-certificates libseccomp squashfs-tools
+# IFB
+RUN apk add --no-cache sshfs python3
+RUN pip3 install shyaml j2cli[yaml] argparse
+# END IFB
 ENV PATH="/usr/local/singularity/bin:$PATH"
 ENTRYPOINT ["/usr/local/singularity/bin/singularity"]
